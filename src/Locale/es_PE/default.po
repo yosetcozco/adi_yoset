@@ -1,0 +1,24 @@
+msgid"Id"
+msgstr"Codigo"
+
+msgid"email"
+msgstr"Correo Electronico"
+
+msgid"Name"
+msgstr"Nombre"
+
+msgid"Dni"
+msgstr"Dni"
+
+msgid"College"
+msgstr"Colegio"
+
+msgid"Role"
+msgstr"Rol"
+
+msgid"Status"
+msgstr"Estado"
+
+msgid"Actions"
+msgstr"Acciones"
+
