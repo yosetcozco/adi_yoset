@@ -23,6 +23,7 @@ class StudentsFixture extends TestFixture
         'college_id' => ['type' => 'integer', 'length' => 7, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'tutor_id' => ['type' => 'integer', 'length' => 5, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'level_id' => ['type' => 'integer', 'length' => 1, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'nota' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'created' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         '_constraints' => [
@@ -53,8 +54,9 @@ class StudentsFixture extends TestFixture
                 'college_id' => 1,
                 'tutor_id' => 1,
                 'level_id' => 1,
-                'created' => '2019-06-12',
-                'modified' => '2019-06-12'
+                'nota' => 1,
+                'created' => '2019-06-17',
+                'modified' => '2019-06-17'
             ],
         ];
         parent::init();

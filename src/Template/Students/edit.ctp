@@ -20,6 +20,8 @@
         <li><?= $this->Html->link(__('New Tutor'), ['controller' => 'Tutors', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Levels'), ['controller' => 'Levels', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Level'), ['controller' => 'Levels', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Winners'), ['controller' => 'Winners', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Winner'), ['controller' => 'Winners', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="students form large-9 medium-8 columns content">
@@ -34,6 +36,7 @@
             echo $this->Form->control('college_id', ['options' => $colleges]);
             echo $this->Form->control('tutor_id', ['options' => $tutors]);
             echo $this->Form->control('level_id', ['options' => $levels]);
+            echo $this->Form->control('nota');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

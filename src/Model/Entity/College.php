@@ -8,6 +8,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property int $code
+ * @property int $level_id
  * @property string $name
  * @property string $director
  * @property string $email
@@ -16,6 +17,7 @@ use Cake\ORM\Entity;
  * @property string $district
  * @property string $province
  *
+ * @property \App\Model\Entity\Level $level
  * @property \App\Model\Entity\Student[] $students
  * @property \App\Model\Entity\Tutor[] $tutors
  * @property \App\Model\Entity\User[] $users
@@ -33,6 +35,7 @@ class College extends Entity
      */
     protected $_accessible = [
         'code' => true,
+        'level_id' => true,
         'name' => true,
         'director' => true,
         'email' => true,
@@ -40,6 +43,7 @@ class College extends Entity
         'address' => true,
         'district' => true,
         'province' => true,
+        'level' => true,
         'students' => true,
         'tutors' => true,
         'users' => true

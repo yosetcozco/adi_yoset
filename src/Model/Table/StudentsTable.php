@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\CollegesTable|\Cake\ORM\Association\BelongsTo $Colleges
  * @property \App\Model\Table\TutorsTable|\Cake\ORM\Association\BelongsTo $Tutors
  * @property \App\Model\Table\LevelsTable|\Cake\ORM\Association\BelongsTo $Levels
+ * @property \App\Model\Table\WinnersTable|\Cake\ORM\Association\HasMany $Winners
  *
  * @method \App\Model\Entity\Student get($primaryKey, $options = [])
  * @method \App\Model\Entity\Student newEntity($data = null, array $options = [])
@@ -54,6 +55,9 @@ class StudentsTable extends Table
             'foreignKey' => 'level_id',
             'joinType' => 'INNER'
         ]);
+        $this->hasMany('Winners', [
+            'foreignKey' => 'student_id'
+        ]);
     }
 
     /**
@@ -90,6 +94,10 @@ class StudentsTable extends Table
             ->requirePresence('email', 'create')
             ->allowEmptyString('email', false)
             ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+
+        $validator
+            ->integer('nota')
+            ->allowEmptyString('nota');
 
         return $validator;
     }

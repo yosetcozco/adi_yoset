@@ -2,12 +2,12 @@
 
 <div class="container">
 
-<div class="row" style="margin-top:20px">
+<div class="row" style="justify-content: center;
+  align-items: center;">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-        <?= $this->Flash->render('auth') ?>
-		<?= $this->Form->create() ?>
+    		<?= $this->Form->create() ?>
 			<fieldset>
-				<h2>Iniciar Sesion</h2>
+				<h2 style="color: white">Iniciar Sesion 2</h2>
 				<hr class="colorgraph">
 				<div class="form-group">
                     <?= $this->Form->input('email', ['class' => 'form-control input-lg', 'placeholder' => 'Correo electrónico', 'label' => false, 'required']) ?>

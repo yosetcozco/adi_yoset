@@ -37,7 +37,7 @@ class StudentsController extends AppController
     public function view($id = null)
     {
         $student = $this->Students->get($id, [
-            'contain' => ['Colleges', 'Tutors', 'Levels']
+            'contain' => ['Colleges', 'Tutors', 'Levels', 'Winners']
         ]);
 
         $this->set('student', $student);
@@ -111,5 +111,12 @@ class StudentsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+    public function isAuthorized($user){
+        /*    if(isset($user['status']) and $user['status'] === '1')
+        {
+            return true;
+        }*/
+    return true;
     }
 }

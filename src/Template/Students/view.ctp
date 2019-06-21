@@ -17,6 +17,8 @@
         <li><?= $this->Html->link(__('New Tutor'), ['controller' => 'Tutors', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Levels'), ['controller' => 'Levels', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Level'), ['controller' => 'Levels', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Winners'), ['controller' => 'Winners', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Winner'), ['controller' => 'Winners', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="students view large-9 medium-8 columns content">
@@ -55,6 +57,10 @@
             <td><?= $this->Number->format($student->age) ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('Nota') ?></th>
+            <td><?= $this->Number->format($student->nota) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Created') ?></th>
             <td><?= h($student->created) ?></td>
         </tr>
@@ -63,4 +69,33 @@
             <td><?= h($student->modified) ?></td>
         </tr>
     </table>
+    <div class="related">
+        <h4><?= __('Related Winners') ?></h4>
+        <?php if (!empty($student->winners)): ?>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th scope="col"><?= __('Id') ?></th>
+                <th scope="col"><?= __('College Id') ?></th>
+                <th scope="col"><?= __('Student Id') ?></th>
+                <th scope="col"><?= __('Tutor Id') ?></th>
+                <th scope="col"><?= __('Note') ?></th>
+                <th scope="col" class="actions"><?= __('Actions') ?></th>
+            </tr>
+            <?php foreach ($student->winners as $winners): ?>
+            <tr>
+                <td><?= h($winners->id) ?></td>
+                <td><?= h($winners->college_id) ?></td>
+                <td><?= h($winners->student_id) ?></td>
+                <td><?= h($winners->tutor_id) ?></td>
+                <td><?= h($winners->note) ?></td>
+                <td class="actions">
+                    <?= $this->Html->link(__('View'), ['controller' => 'Winners', 'action' => 'view', $winners->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'Winners', 'action' => 'edit', $winners->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Winners', 'action' => 'delete', $winners->id], ['confirm' => __('Are you sure you want to delete # {0}?', $winners->id)]) ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+        <?php endif; ?>
+    </div>
 </div>

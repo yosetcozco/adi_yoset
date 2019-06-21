@@ -19,7 +19,7 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $this->paginate = ['limit'=>10,
+        $this->paginate = [
             'contain' => ['Colleges', 'Roles']
         ];
         $users = $this->paginate($this->Users);
@@ -113,15 +113,27 @@ class UsersController extends AppController
 
 
     public function login(){
+        $this->Flash->success('Dos');
+
      if ($this->request->is('post')) {
         $user = $this->Auth->identify();
-        if ( $user['status']) {
+         $this->Flash->success('Status: ' . var_dump($user) );
+        if ($user && $user['status']) {
+
             $this->Auth->setUser($user);
-            return $this->redirect($this->Auth->redirectUrl());
-        }
+            if($user['role_id'] ==2){
+             return $this->redirect(['controller' => 'Users', 'action' => 'admin']);
+                                 }
+         else {
+             return $this->redirect(['controller' => 'Users', 'action' => 'home']);
+              } 
+                                }
+                                     }
+        else{
         $this->Flash->error('Your username or password is incorrect.');
-    }
-    }
+            }
+                             }
+
     public function logout(){
     $this->Flash->success('You are now logged out.');
     return $this->redirect($this->Auth->logout());
@@ -135,6 +147,26 @@ class UsersController extends AppController
                 return $this->redirect($this->Auth->logout());
             }
         }
+    }
+       public function home()
+    {
+        $this->render();
+    }
+    public function admin()
+    {
+        $user = $this->Users->get($this->Auth->user('id'), [
+            'contain' => ['Colleges', 'Roles']
+        ]);
+
+        $this->set('user', $user);
+    }
+
+    public function isAuthorized($user){
+        /*    if(isset($user['status']) and $user['status'] === '1')
+        {
+            return true;
+        }*/
+    return true;
     }
 }
 

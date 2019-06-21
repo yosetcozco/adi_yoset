@@ -19,6 +19,9 @@ class CollegesController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'contain' => ['Levels']
+        ];
         $colleges = $this->paginate($this->Colleges);
 
         $this->set(compact('colleges'));
@@ -34,7 +37,7 @@ class CollegesController extends AppController
     public function view($id = null)
     {
         $college = $this->Colleges->get($id, [
-            'contain' => ['Students', 'Tutors', 'Users']
+            'contain' => ['Levels', 'Students', 'Tutors', 'Users']
         ]);
 
         $this->set('college', $college);
@@ -57,7 +60,8 @@ class CollegesController extends AppController
             }
             $this->Flash->error(__('The college could not be saved. Please, try again.'));
         }
-        $this->set(compact('college'));
+        $levels = $this->Colleges->Levels->find('list', ['limit' => 200]);
+        $this->set(compact('college', 'levels'));
     }
 
     /**
@@ -81,7 +85,8 @@ class CollegesController extends AppController
             }
             $this->Flash->error(__('The college could not be saved. Please, try again.'));
         }
-        $this->set(compact('college'));
+        $levels = $this->Colleges->Levels->find('list', ['limit' => 200]);
+        $this->set(compact('college', 'levels'));
     }
 
     /**

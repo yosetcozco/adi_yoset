@@ -26,7 +26,8 @@ class StudentsTableTest extends TestCase
         'app.Students',
         'app.Colleges',
         'app.Tutors',
-        'app.Levels'
+        'app.Levels',
+        'app.Winners'
     ];
 
     /**

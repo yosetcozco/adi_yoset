@@ -8,6 +8,8 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('List Colleges'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Levels'), ['controller' => 'Levels', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Level'), ['controller' => 'Levels', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Students'), ['controller' => 'Students', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Student'), ['controller' => 'Students', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Tutors'), ['controller' => 'Tutors', 'action' => 'index']) ?></li>
@@ -22,6 +24,7 @@
         <legend><?= __('Add College') ?></legend>
         <?php
             echo $this->Form->control('code');
+            echo $this->Form->control('level_id', ['options' => $levels]);
             echo $this->Form->control('name');
             echo $this->Form->control('director');
             echo $this->Form->control('email');

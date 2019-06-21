@@ -14,6 +14,8 @@
         <li><?= $this->Html->link(__('New Tutor'), ['controller' => 'Tutors', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Levels'), ['controller' => 'Levels', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Level'), ['controller' => 'Levels', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Winners'), ['controller' => 'Winners', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Winner'), ['controller' => 'Winners', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="students index large-9 medium-8 columns content">
@@ -29,6 +31,7 @@
                 <th scope="col"><?= $this->Paginator->sort('college_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('tutor_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('level_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('nota') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -45,6 +48,7 @@
                 <td><?= $student->has('college') ? $this->Html->link($student->college->name, ['controller' => 'Colleges', 'action' => 'view', $student->college->id]) : '' ?></td>
                 <td><?= $student->has('tutor') ? $this->Html->link($student->tutor->name, ['controller' => 'Tutors', 'action' => 'view', $student->tutor->id]) : '' ?></td>
                 <td><?= $student->has('level') ? $this->Html->link($student->level->name, ['controller' => 'Levels', 'action' => 'view', $student->level->id]) : '' ?></td>
+                <td><?= $this->Number->format($student->nota) ?></td>
                 <td><?= h($student->created) ?></td>
                 <td><?= h($student->modified) ?></td>
                 <td class="actions">

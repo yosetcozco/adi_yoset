@@ -14,12 +14,14 @@ use Cake\ORM\Entity;
  * @property int $college_id
  * @property int $tutor_id
  * @property int $level_id
+ * @property int|null $nota
  * @property \Cake\I18n\FrozenDate $created
  * @property \Cake\I18n\FrozenDate $modified
  *
  * @property \App\Model\Entity\College $college
  * @property \App\Model\Entity\Tutor $tutor
  * @property \App\Model\Entity\Level $level
+ * @property \App\Model\Entity\Winner[] $winners
  */
 class Student extends Entity
 {
@@ -40,10 +42,12 @@ class Student extends Entity
         'college_id' => true,
         'tutor_id' => true,
         'level_id' => true,
+        'nota' => true,
         'created' => true,
         'modified' => true,
         'college' => true,
         'tutor' => true,
-        'level' => true
+        'level' => true,
+        'winners' => true
     ];
 }

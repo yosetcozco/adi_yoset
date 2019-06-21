@@ -9,6 +9,7 @@ use Cake\Validation\Validator;
 /**
  * Colleges Model
  *
+ * @property \App\Model\Table\LevelsTable|\Cake\ORM\Association\BelongsTo $Levels
  * @property \App\Model\Table\StudentsTable|\Cake\ORM\Association\HasMany $Students
  * @property \App\Model\Table\TutorsTable|\Cake\ORM\Association\HasMany $Tutors
  * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\HasMany $Users
@@ -38,6 +39,10 @@ class CollegesTable extends Table
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
+        $this->belongsTo('Levels', [
+            'foreignKey' => 'level_id',
+            'joinType' => 'INNER'
+        ]);
         $this->hasMany('Students', [
             'foreignKey' => 'college_id'
         ]);
@@ -122,6 +127,7 @@ class CollegesTable extends Table
     {
         $rules->add($rules->isUnique(['email']));
         $rules->add($rules->isUnique(['code']));
+        $rules->add($rules->existsIn(['level_id'], 'Levels'));
 
         return $rules;
     }

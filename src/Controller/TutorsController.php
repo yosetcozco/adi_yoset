@@ -110,4 +110,11 @@ class TutorsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+    public function isAuthorized($user){
+        /*    if(isset($user['status']) and $user['status'] === '1')
+        {
+            return true;
+        }*/
+    return true;
+    }
 }

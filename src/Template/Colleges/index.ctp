@@ -10,10 +10,6 @@
         <li><?= $this->Html->link(__('New College'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Students'), ['controller' => 'Students', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Student'), ['controller' => 'Students', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Tutors'), ['controller' => 'Tutors', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Tutor'), ['controller' => 'Tutors', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="colleges index large-9 medium-8 columns content">
@@ -23,10 +19,8 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('code') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('level_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('name') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('director') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('email') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('phone') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('address') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('district') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('province') ?></th>
@@ -37,11 +31,9 @@
             <?php foreach ($colleges as $college): ?>
             <tr>
                 <td><?= $this->Number->format($college->id) ?></td>
-                <td><?= $this->Number->format($college->code) ?></td>
+                <td><?= h($college->code) ?></td>
+                <td><?= $college->has('level') ? $this->Html->link($college->level->name, ['controller' => 'Levels', 'action' => 'view', $college->level->id]) : '' ?></td>
                 <td><?= h($college->name) ?></td>
-                <td><?= h($college->director) ?></td>
-                <td><?= h($college->email) ?></td>
-                <td><?= $this->Number->format($college->phone) ?></td>
                 <td><?= h($college->address) ?></td>
                 <td><?= h($college->district) ?></td>
                 <td><?= h($college->province) ?></td>
